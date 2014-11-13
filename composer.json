@@ -1,0 +1,19 @@
+{
+    "name": "ssola/enabler",
+    "description": "Enable a functionality to specific IP, specific group / users or by percentage of visitors.",
+    "require": {
+        "predis/predis": "~1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio Sola",
+            "email": "introduccio@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Enabler": "src/"
+        }
+    }   
+}
