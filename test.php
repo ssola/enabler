@@ -13,4 +13,4 @@ $enabler = new Enabler\Enabler(new Enabler\Storage\Redis($configuration));
 //$feature = new Enabler\Feature("Music", true, ["Enabler\Validator\Ip" => array("127.0.2.1")]);
 $feature = new Enabler\Feature("Music", true, ["Enabler\Validator\Percentage" => 10]);
 $enabler->storage()->create($feature);
-var_dump($enabler->enabled("Music"));die;
+
