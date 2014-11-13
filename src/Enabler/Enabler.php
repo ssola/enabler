@@ -16,19 +16,17 @@ class Enabler
         return $this->storage;
     }
 
-    public function should($featureName)
+    public function enabled($featureName)
     {
         $feature = $this->storage()->get($featureName);
 
         // If record doesn't exists, then we should enable this feature
         if(empty($feature)) {
-            echo "Here";
             return true;
         }
 
         // if feature has been enabled then it's open to everyone
         if(!$feature->enabled) {
-            echo "there";
             return true;
         }
 

@@ -31,5 +31,7 @@ class Percentage implements Validable
         $persistence[$feature->name] = $result;
 
         setcookie("__enabler_persistence", json_encode($persistence), time() + (3600*24*30));
+
+        return $result;
     }
 }

@@ -9,6 +9,7 @@ class Ip implements Validable
         $ips = $value;
 
         if(!is_array($value)) {
+            $ips = [];
             $ips[] = $value;
         }
 
@@ -21,10 +22,6 @@ class Ip implements Validable
 
     private function getIp()
     {
-        if (php_sapi_name() === 'cli') {
-            return null;
-        }
-
         return $_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
     }
 }

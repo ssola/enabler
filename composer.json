@@ -2,7 +2,8 @@
     "name": "ssola/enabler",
     "description": "Enable a functionality to specific IP, specific group / users or by percentage of visitors.",
     "require": {
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "phpunit/phpunit": "4.3.5"
     },
     "license": "MIT",
     "authors": [
