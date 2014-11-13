@@ -7,7 +7,7 @@ class Percentage implements Validable
     public function validate ($data, Feature $feature)
     {
         $percentage = $data;
-        $persistence = (isset($_COOKIE['__enabler_persistence']) ? json_decode($_COOKIE['__enabler_persistence']) : []);
+        $persistence = $this->getCookie();
 
         if(!empty($persistence)) {
             if(isset($persistence[$feature->name])) {
@@ -24,14 +24,32 @@ class Percentage implements Validable
         $randomNumber = rand(1,100);
         $result = false;
 
-        if($randomNumber <= $percentage) {
+        if($randomNumber <= intval($percentage-($percentage*.10))) {
             $result = true;
         }
         
         $persistence[$feature->name] = $result;
 
-        setcookie("__enabler_persistence", json_encode($persistence), time() + (3600*24*30));
+        $this->storeCookie($persistence);
 
         return $result;
+    }
+
+    protected function getCookie()
+    {
+        if(php_sapi_name() == 'cli') {
+            return null;
+        }
+
+        return (isset($_COOKIE['__enabler_persistence']) ? json_decode($_COOKIE['__enabler_persistence']) : []);
+    }
+
+    protected function storeCookie($persistence) 
+    {
+        if(php_sapi_name() == 'cli') {
+            return null;
+        }
+
+        setcookie("__enabler_persistence", json_encode($persistence), time() + (3600*24*30));
     }
 }
