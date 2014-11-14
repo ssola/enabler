@@ -30,17 +30,17 @@ class Enabler
             return true;
         }
 
-        if(!is_array($feature->validators)) {
+        if(!is_array($feature->filters)) {
             return true;
         }
 
-        foreach($feature->validators as $validator => $value) {
-            if(!class_exists($validator)) {
+        foreach($feature->filters as $filter => $value) {
+            if(!class_exists($filter)) {
                 throw new \RuntimeException("Validator not found!");
             }
 
-            $instance = new $validator();
-            if(!$instance->validate($value, $feature)) {
+            $instance = new $filter();
+            if(!$instance->filter($value, $feature)) {
                 return false;
             }
         }

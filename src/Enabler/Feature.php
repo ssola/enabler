@@ -5,25 +5,25 @@ use Enabler\Validator\Validable;
 class Feature
 {
     private $name;
-    private $validators;
+    private $filters;
     private $enabled;
 
-    public function __construct($name, $enabled, $validators = [] )
+    public function __construct($name, $enabled, $filters = [] )
     {
-        if(empty($name) || empty($validators) || empty($enabled)) {
+        if(empty($name) || empty($filters) || empty($enabled)) {
             throw new \InvalidArgumentException("Some of the parameters are empty"); 
         }
 
         $this->name = $name;
         $this->enabled = $enabled;
 
-        if(count($validators) > 0) {
-            foreach($validators as $validator => $value) {
-                if(!class_exists($validator)) {
+        if(count($filters) > 0) {
+            foreach($filters as $filter => $value) {
+                if(!class_exists($filter)) {
                     throw new \InvalidArgumentException("Validator not valid!");
                 }
 
-                $this->validators[$validator] = $value;
+                $this->filters[$filter] = $value;
             }
         }
     }

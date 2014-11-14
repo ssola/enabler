@@ -3,8 +3,8 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
 {
     public function testCheckIpValidatorWorks()
     {
-        $percentage = 30;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Validator\Percentage" => $percentage]);
+        $percentage = 60;
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())
@@ -18,13 +18,13 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
         $enabler->storage()->create($feature);        
         $numEnables = 0;
 
-        for($i = 0; $i <= 100; $i++) {
+        for($i = 0; $i <= 10000; $i++) {
             if($enabler->enabled('Music')) {
                 $numEnables++;
             }
         }
 
-        $result = (($numEnables-($numEnables*.10)) <= $percentage) ? true : false;
+        $result = (($numEnables-($numEnables)) <= $percentage) ? true : false;
 
         $this->assertTrue($result);
     }
