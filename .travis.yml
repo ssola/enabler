@@ -1,4 +1,5 @@
 language: php
+install: composer update
 php:
   - 5.5
   - 5.4
