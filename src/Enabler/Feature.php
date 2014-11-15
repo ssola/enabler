@@ -1,5 +1,6 @@
 <?php namespace Enabler;
 
+use Enabler\Condition;
 use Enabler\Validator\Validable;
 
 class Feature
@@ -26,6 +27,15 @@ class Feature
                 $this->filters[$filter] = $value;
             }
         }
+    }
+
+    /**
+     * Enabler\Filter\Ip => ['values' => [], 'depends' => [Enabler\Filter\]]
+     *
+     */
+    public function addCondition(Condition $condition)
+    {
+
     }
 
     public function __get($property)
