@@ -4,10 +4,23 @@ use Enabler\Feature;
 use Enabler\Identity;
 use Enabler\Filter\Algorithm\RandomWeighted;
 
+/**
+ * Using given algorithm tries to validates if visitor can see given Feature or not
+ * 
+ * @package Enabler\Filter
+ */
 class Percentage implements Filterable
 {
+    /**
+     * Stores algorithm to use in order to calculate distribution
+     * 
+     * @see Enabler\Filter\Algorithm\RandomWeighted
+     */
     private $algorithm;
 
+    /**
+     * @see Enabler\Filter\Filterable filter
+     */
     public function filter ($data, Feature $feature, Identity $identity)
     {
         $percentage = $data;
@@ -42,6 +55,9 @@ class Percentage implements Filterable
         return $result;
     }
 
+    /**
+     * Get information for cookie
+     */
     protected function getCookie()
     {
         if(php_sapi_name() == 'cli') {
@@ -51,6 +67,11 @@ class Percentage implements Filterable
         return (isset($_COOKIE['__enabler_persistence']) ? json_decode($_COOKIE['__enabler_persistence']) : []);
     }
 
+    /**
+     * Stores persistence array data to a cookie in order to remember this visitor
+     * 
+     * @param array $persistence
+     */
     protected function storeCookie($persistence) 
     {
         if(php_sapi_name() == 'cli') {
@@ -60,6 +81,11 @@ class Percentage implements Filterable
         setcookie("__enabler_persistence", json_encode($persistence), time() + (3600*24*30));
     }
 
+    /**
+     * Load default algorithm with given data
+     * 
+     * @param array $data
+     */
     protected function loadAlgorithm($data)
     {
         if(empty($this->algorithm)) {
@@ -69,6 +95,11 @@ class Percentage implements Filterable
         return $this->algorithm;
     }
 
+    /**
+     * Call this method if you want to inject your own algorithm
+     * 
+     * @param object $algorithm
+     */
     public function addAlgorithm($algorithm) 
     {
         $this->algorithm = $algorithm;

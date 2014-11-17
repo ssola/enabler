@@ -3,8 +3,17 @@
 use Enabler\Feature;
 use Enabler\Identity;
 
+/**
+ * This filter tries to filter with user information at the moment it
+ * supports user id and/or group
+ * 
+ * @package Enabler\Filter
+ */
 class Identifier implements Filterable
 {
+    /**
+     * @see Enabler\Filter\Filterable filter
+     */
     public function filter ($data, Feature $feature, Identity $identity)
     {
         if(!is_array($data)) {
