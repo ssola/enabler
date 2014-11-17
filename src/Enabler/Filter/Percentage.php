@@ -1,13 +1,14 @@
 <?php namespace Enabler\Filter;
 
 use Enabler\Feature;
+use Enabler\Identity;
 use Enabler\Filter\Algorithm\RandomWeighted;
 
 class Percentage implements Filterable
 {
     private $algorithm;
 
-    public function filter ($data, Feature $feature)
+    public function filter ($data, Feature $feature, Identity $identity)
     {
         $percentage = $data;
         $persistence = $this->getCookie();

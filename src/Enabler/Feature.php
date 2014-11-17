@@ -29,15 +29,6 @@ class Feature
         }
     }
 
-    /**
-     * Enabler\Filter\Ip => ['values' => [], 'depends' => [Enabler\Filter\]]
-     *
-     */
-    public function addCondition(Condition $condition)
-    {
-
-    }
-
     public function __get($property)
     {
         if(!property_exists($this, $property)) {

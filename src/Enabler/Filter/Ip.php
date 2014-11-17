@@ -1,10 +1,11 @@
 <?php namespace Enabler\Filter;
 
 use Enabler\Feature;
+use Enabler\Identity;
 
 class Ip implements Filterable
 {
-    public function filter($value, Feature $feature) 
+    public function filter($value, Feature $feature, Identity $identity) 
     {
         $ips = $value;
 

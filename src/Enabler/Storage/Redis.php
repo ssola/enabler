@@ -14,7 +14,7 @@ class Redis implements Storable
 
     public function create (Feature $feature)
     {
-        $this->client->set($feature->name, json_encode([
+        $this->client->set($feature->name, serialize([
             'filters' => $feature->filters,
             'enabled' => $feature->enabled
         ]));
@@ -33,8 +33,8 @@ class Redis implements Storable
             return false;
         }
 
-        $decodedValue = json_decode($value);
+        $decodedValue = unserialize($value);
 
-        return new Feature($name, $decodedValue->enabled, $decodedValue->filters);
+        return new Feature($name, $decodedValue['enabled'], $decodedValue['filters']);
     }    
 }

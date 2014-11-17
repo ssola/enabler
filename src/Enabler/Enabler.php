@@ -5,10 +5,16 @@ use Enabler\Storage\Storable;
 class Enabler
 {
     private $storage;
+    private $identity;
 
-    public function __construct(Storable $storage)
+    public function __construct(Storable $storage, Identity $identity = null)
     {
         $this->storage = $storage;
+        $this->identity = $identity;
+
+        if($identity == null) {
+            $this->identity = new Identity;
+        }
     }
 
     public function storage()
@@ -40,7 +46,7 @@ class Enabler
             }
 
             $instance = new $filter();
-            if(!$instance->filter($value, $feature)) {
+            if(!$instance->filter($value, $feature, $this->identity)) {
                 return false;
             }
         }
