@@ -1,16 +1,19 @@
 <?php namespace Enabler;
 
 use Enabler\Storage\Storable;
+use Enabler\Filter\Factory as FilterFactory;
 
 class Enabler
 {
     private $storage;
     private $identity;
+    private $filterRepository;
 
     public function __construct(Storable $storage, Identity $identity = null)
     {
         $this->storage = $storage;
         $this->identity = $identity;
+        $this->filterRepository = new FilterFactory();
 
         if($identity == null) {
             $this->identity = new Identity;
@@ -41,11 +44,8 @@ class Enabler
         }
 
         foreach($feature->filters as $filter => $value) {
-            if(!class_exists($filter)) {
-                throw new \RuntimeException("Validator not found!");
-            }
+            $instance = $this->filterRepository->load($filter);
 
-            $instance = new $filter();
             if(!$instance->filter($value, $feature, $this->identity)) {
                 return false;
             }
