@@ -4,7 +4,7 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
     public function testWith60Percent()
     {
         $percentage = 60;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Distributed" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())
@@ -32,7 +32,7 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
     public function testWith10Percent()
     {
         $percentage = 10;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Distributed" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())
@@ -60,7 +60,7 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
     public function testWith35Percent()
     {
         $percentage = 35;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Distributed" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())
@@ -89,7 +89,7 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
     public function testWith82Percent()
     {
         $percentage = 82;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Distributed" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())
@@ -117,7 +117,7 @@ class ValidatorPercentageTest extends PHPUnit_Framework_TestCase
     public function testWith1Percent()
     {
         $percentage = 1;
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Percentage" => $percentage]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Distributed" => $percentage]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())

@@ -9,7 +9,7 @@ use Enabler\Filter\Algorithm\RandomWeighted;
  * 
  * @package Enabler\Filter
  */
-class Percentage implements Filterable
+class Distributed implements Filterable
 {
     /**
      * Stores algorithm to use in order to calculate distribution
