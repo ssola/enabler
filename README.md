@@ -16,7 +16,61 @@ If you need a different persistence tool like Memcache or MySQL you can simply w
 ### Installation
 
 composer require ssola/enabler
+
 composer update
+
+### How it works?
+
+With Enabler is really simple to show/hide features to your customers. Let me show you this example:
+
+```code
+  Requirement:
+  We should to display our secret Feature only to 1% percent of our visitors in order to start testing with real user cases.
+```
+
+First of all we have to create our new Feature:
+
+```php
+$feature = new Enabler\Feature(
+  'secret-feature',
+  true,
+  [
+    'Enabler\Filter\Distributed' => 1
+  ]
+);
+
+$enabler = new Enabler\Enabler($storage);
+$enabler->storage()->create($feature);
+
+// At this point feature has been created and will use the Distributed filter to display it only to 1% of our visitors
+// after this we can create the condition:
+
+if ($enabler->enabled('secret-feature')) {
+  // Here your feature for only 1% of your visitors.
+}
+```
+
+After some days of testing you decided to test your new Feature with a bunch of your customers. For that reason we have the Identifier filter. You only have to use the Identity object to pass the necessary data (user id and group).
+
+```php
+$identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
+
+$feature = new Enabler\Feature(
+  'secret-feature',
+  true,
+  [
+    'Enabler\Filter\Identifier' => ['groups' => ['early-adopters', 'test-users']]
+  ]
+);
+
+$enabler = new Enabler\Enabler($storage);
+$enabler->storage()->create($feature);
+
+if ($enabler->enabled('secret-feature')) {
+  // Here your feature for users that belongs to early-adopters or test-users group
+}
+
+```
 
 ### Extend me
 
@@ -67,5 +121,5 @@ class FilterByWeather implements Enabler\Filter\Filterable
 You can choose among different filters or create your owns in order to displar/hide your features:
 
 - By IP: Display your feature only to certain IP or IP range (TBD)
-- By distributed weight: You can display your feature for example only to 10% or your visitors
+- By Random weight distribution: You can display your feature for example only to 10% or your visitors
 - By Identity: Use our Identity class or create your own in order to have access to User Id and/or Group.
