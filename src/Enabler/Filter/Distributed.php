@@ -21,9 +21,9 @@ class Distributed implements Filterable
     /**
      * @see Enabler\Filter\Filterable filter
      */
-    public function filter ($data, Feature $feature, Identity $identity)
+    public function filter (array $data, Feature $feature, Identity $identity)
     {
-        $percentage = $data;
+        $percentage = end($data);
         $persistence = $this->getCookie();
 
         if(!empty($persistence)) {

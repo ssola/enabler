@@ -14,12 +14,8 @@ class Identifier implements Filterable
     /**
      * @see Enabler\Filter\Filterable filter
      */
-    public function filter ($data, Feature $feature, Identity $identity)
+    public function filter (array $data, Feature $feature, Identity $identity)
     {
-        if(!is_array($data)) {
-            throw new \InvalidArgumentException("Input data is wrong");
-        }
-
         if(!isset($data['userIds']) && !isset($data['groups'])) {
             throw new \InvalidArgumentException("Missing user ids or groups");
         }

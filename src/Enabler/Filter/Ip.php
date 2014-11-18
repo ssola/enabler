@@ -13,14 +13,9 @@ class Ip implements Filterable
     /**
      * @see Enabler\Filter\Filterable filter
      */
-    public function filter($value, Feature $feature, Identity $identity) 
+    public function filter(array $value, Feature $feature, Identity $identity) 
     {
         $ips = $value;
-
-        if(!is_array($value)) {
-            $ips = [];
-            $ips[] = $value;
-        }
 
         if(in_array($this->getIp(), $ips)) {
             return true;

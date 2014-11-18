@@ -3,7 +3,7 @@ class ValidatorIpTest extends PHPUnit_Framework_TestCase
 {
     public function testCheckIpValidatorWorks()
     {
-        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Ip" => "127.0.2.1"]);
+        $feature = new Enabler\Feature("Music", true, ["Enabler\Filter\Ip" => ["127.0.2.1"]]);
 
         $mockStorage = $this->getMockBuilder('Enabler\Storage\Storable')->getMock();
         $mockStorage->expects($this->any())

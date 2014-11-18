@@ -18,5 +18,5 @@ interface Filterable
      * @param Feature $feature
      * @param Identity $identity
      */
-    public function filter($value, Feature $feature, Identity $identity);
+    public function filter(array $value, Feature $feature, Identity $identity);
 }
