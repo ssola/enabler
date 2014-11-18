@@ -25,7 +25,7 @@ With Enabler is really simple to show/hide features to your customers. Let me sh
 
 ```code
   Requirement:
-  We should display our secret Feature only to 1% percent of our visitors in order to start testing with real user cases.
+  We should to display our secret Feature only to 1% percent of our visitors in order to start testing with real user cases.
 ```
 
 First of all we have to create our new Feature:
@@ -48,6 +48,28 @@ $enabler->storage()->create($feature);
 if ($enabler->enabled('secret-feature')) {
   // Here your feature for only 1% of your visitors.
 }
+```
+
+After some days of testing you decided to test your new Feature with a bunch of your customers. For that reason we have the Identifier filter. You only have to use the Identity object to pass the necessary data (user id and group).
+
+```php
+$identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
+
+$feature = new Enabler\Feature(
+  'secret-feature',
+  true,
+  [
+    'Enabler\Filter\Identifier' => ['groups' => ['early-adopters', 'test-users']]
+  ]
+);
+
+$enabler = new Enabler\Enabler($storage);
+$enabler->storage()->create($feature);
+
+if ($enabler->enabled('secret-feature')) {
+  // Here your feature for users that belongs to early-adopters or test-users group
+}
+
 ```
 
 ### Extend me
