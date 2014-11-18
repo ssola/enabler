@@ -15,8 +15,8 @@ interface Filterable
      * Given a value, Feature and an Identity checks if should be visibel or not
      * 
      * @param mixed $value
-     * @param Enabler\Feature $feature
-     * @param Enabler\Identity $identity
+     * @param Feature $feature
+     * @param Identity $identity
      */
     public function filter($value, Feature $feature, Identity $identity);
 }

@@ -1,8 +1,5 @@
 <?php namespace Enabler;
 
-use Enabler\Condition;
-use Enabler\Validator\Validable;
-
 /**
  * This class is used to represent a feature. This class expects if this
  * feature is enabled and which filters should be used to determinate if

@@ -13,12 +13,15 @@ interface Storable
     /**
      * Given a Feature should be possible to store it
      * 
-     * @param Enabler\Feature $feature
+     * @param Feature $feature
+     * @return void
      */
     public function create(Feature $feature);
 
     /**
      * Given a Feature name should be possible to delete from persistence
+     * 
+     * @return void
      */
     public function delete();
 
