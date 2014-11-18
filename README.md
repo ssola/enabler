@@ -63,7 +63,7 @@ $feature = new Enabler\Feature(
   ]
 );
 
-$enabler = new Enabler\Enabler($storage);
+$enabler = new Enabler\Enabler($storage, $identity);
 $enabler->storage()->create($feature);
 
 if ($enabler->enabled('secret-feature')) {
