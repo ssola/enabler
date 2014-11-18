@@ -1,4 +1,4 @@
-enabler [![Build Status](https://travis-ci.org/ssola/enabler.svg)](https://travis-ci.org/ssola/enabler)
+enabler [![Build Status](https://travis-ci.org/ssola/enabler.svg)](https://travis-ci.org/ssola/enabler) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ssola/enabler/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ssola/enabler/?branch=master) 
 =======
 
 Enabler is a simple feature flag package. With this package you can display/hide your awesome new features to customers in order to deploy your new stuff smoothly and to have everything under control.
