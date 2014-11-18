@@ -35,7 +35,7 @@ $feature = new Enabler\Feature(
   'secret-feature',
   true,
   [
-    'Enabler\Filter\Distributed' => 1
+    'Enabler\Filter\Distributed' => [1]
   ]
 );
 
@@ -60,6 +60,29 @@ $feature = new Enabler\Feature(
   true,
   [
     'Enabler\Filter\Identifier' => ['groups' => ['early-adopters', 'test-users']]
+  ]
+);
+
+$enabler = new Enabler\Enabler($storage, $identity);
+$enabler->storage()->create($feature);
+
+if ($enabler->enabled('secret-feature')) {
+  // Here your feature for users that belongs to early-adopters or test-users group
+}
+
+```
+
+But now image that we need to display only to 10% of our test-users group. We can do it easily adding more than one filter to the feature like this:
+
+```php
+$identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
+
+$feature = new Enabler\Feature(
+  'secret-feature',
+  true,
+  [
+    'Enabler\Filter\Distributed' => [10],
+    'Enabler\Filter\Identifier' => ['groups' => ['test-users']]
   ]
 );
 
