@@ -50,7 +50,7 @@ if ($enabler->enabled('secret-feature')) {
 }
 ```
 
-Finally you determined to test your new Feature in a new scenario. In this respect we only want to reveal it to logged in customers.For that logic we have implemented the Identifier filter. You only have to instantiate an Identity object with the purpose passing the required user data. In this case we must to pass the user id and group to which it belongs.
+Finally you determined to test your new Feature in a new scenario. In this respect we only want to reveal it to logged in customers.For that logic we have implemented the Identifier filter. You only have to instantiate an Identity object passing the required user data. In this case we must to pass the user id and group to which it belongs.
 
 ```php
 $identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
