@@ -25,7 +25,7 @@ With Enabler is really simple to show/hide features to your users. Let me show h
 
 
 *Requirement:*
-We need to deploy our new killer feature gradually. We expect lot of new people using it and we need to be completely sure that it works properly. At this stage we only want to enable this feature to a really small bunch of customers: exactly 1% of them.
+We need to deploy our new killer feature gradually. We expect a lot of new people using it and we need to be completely sure that it works properly. At this stage we only want to enable this feature to a really small set of customers: exactly 1% of them.
 
 
 First of all we have to create our new Feature and include which filters should be used.
