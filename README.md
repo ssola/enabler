@@ -121,7 +121,7 @@ class MyAwesomeStorageAdapter implements Enabler\Storage\Storable
 ```
 #### Filters
 
-At the moment we support three different filters Random Weighted Distribution, IP and Identity. But we thought people will have great ideas and it's really simple to create your own filters.
+At the moment we support four different filters Random Weighted Distribution, IP, Date / Date Range and Identity. But we thought people will have great ideas and it's really simple to create your own filters.
 
 ```php
 class FilterByWeather implements Enabler\Filter\Filterable
@@ -146,3 +146,4 @@ You can choose among different filters or create your owns in order to displar/h
 - By IP: Display your feature only to certain IP or IP range (TBD)
 - By Random weight distribution: You can display your feature for example only to 10% or your visitors
 - By Identity: Use our Identity class or create your own in order to have access to User Id and/or Group.
+- By date or date range: Display your feature depending on specific date or set a range to display it only for a precise range of dates.
