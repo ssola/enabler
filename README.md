@@ -82,7 +82,8 @@ $feature = new Enabler\Feature(
   true,
   [
     'Enabler\Filter\Distributed' => [10],
-    'Enabler\Filter\Identifier' => ['groups' => ['test-users']]
+    'Enabler\Filter\Identifier' => ['groups' => ['test-users']],
+    'Enabler\Filter\Date' => ['from' => new DateTime('2014-10-30'), 'to' => new DateTime('2015-10-30')]
   ]
 );
 
