@@ -21,14 +21,14 @@ composer update
 
 ### How it works?
 
-With Enabler is really simple to show/hide features to your customers. Let me show you this example:
+With Enabler is really simple to show/hide features to your users. Let me show how it works with this little example:
 
 ```code
   Requirement:
-  We should to display our secret Feature only to 1% percent of our visitors in order to start testing with real user cases.
+  We need to deploy our new killer feature gradually. We expect lot of new people using it and we need to be completely sure that it works properly. At this stage we only want to enable this feature to a really small bunch of customers: exactly 1% of them.
 ```
 
-First of all we have to create our new Feature:
+First of all we have to create our new Feature and include which filters should be used.
 
 ```php
 $feature = new Enabler\Feature(
@@ -50,7 +50,7 @@ if ($enabler->enabled('secret-feature')) {
 }
 ```
 
-After some days of testing you decided to test your new Feature with a bunch of your customers. For that reason we have the Identifier filter. You only have to use the Identity object to pass the necessary data (user id and group).
+Finally you determined to test your new Feature in a new scenario. In this respect we only want to reveal it to logged in customers.For that logic we have implemented the Identifier filter. You only have to instantiate an Identity object with the purpose passing the required user data. In this case we must to pass the user id and group to which it belongs.
 
 ```php
 $identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
@@ -72,7 +72,7 @@ if ($enabler->enabled('secret-feature')) {
 
 ```
 
-But now image that we need to display only to 10% of our test-users group. We can do it easily adding more than one filter to the feature like this:
+But now imagine that we need to display only to a bigger amount (10%) of our test-users group in a particular date range. We can do it easily adding more than one filter to the feature filter chain, like this:
 
 ```php
 $identity = new Enabler\Identity(MyUserClass::getUserId(), MyUserClass::getGroup());
