@@ -69,19 +69,9 @@ class Enabler
         $feature = $this->storage()->get($featureName);
 
         // If record doesn't exists, then we should enable this feature
-        if(empty($feature)) {
+        if(empty($feature) || !$feature->enabled || !is_array($feature->filters)) {
             return true;
         }
-
-        // if feature has been enabled then it's open to everyone
-        if(!$feature->enabled) {
-            return true;
-        }
-
-        if(!is_array($feature->filters)) {
-            return true;
-        }
-
         foreach($feature->filters as $filter => $value) {
             $instance = $this->filterRepository->load($filter);
 
