@@ -22,7 +22,7 @@ class Redis implements Storable
 
     public function delete (Feature $feature)
     {
-        $this->client->set($feature->name);
+        $this->client->del($feature->name);
     }
 
     public function get($name) 
