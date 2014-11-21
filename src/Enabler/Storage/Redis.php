@@ -20,9 +20,9 @@ class Redis implements Storable
         ]));
     }
 
-    public function delete ()
+    public function delete (Feature $feature)
     {
-
+        $this->client->set($feature->name);
     }
 
     public function get($name) 

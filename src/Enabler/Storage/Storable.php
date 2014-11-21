@@ -21,14 +21,16 @@ interface Storable
     /**
      * Given a Feature name should be possible to delete from persistence
      * 
+     * @param Feature $feature
      * @return void
      */
-    public function delete();
+    public function delete(Feature $feature);
 
     /**
      * Given a Feature name grab it from persistence
      * 
      * @param string $name
+     * @return Feature
      */
     public function get($name);
 }
