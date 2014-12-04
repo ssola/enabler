@@ -20,19 +20,34 @@ class Identifier implements Filterable
             throw new \InvalidArgumentException("Missing user ids or groups");
         }
 
-        if($identity->hasUserId() && isset($data['userIds'])) {
-            foreach($data['userIds'] as $userId) {
-                if ($userId == $identity->getUserId()) {
-                    return true;
-                }
-            }
+        if ($this->guardItem('userIds', $data, $identity)
+            || $this->guardItem('groups', $data, $identity)) {
+            return true;
         }
 
-        if($identity->hasGroup() && isset($data['groups'])) {
-            foreach($data['groups'] as $group) {
-                if ($group == $identity->getGroup()) {
-                    return true;
-                }
+        return false;
+    }
+
+    /**
+     * Validates if current Identity can see this feature
+     * 
+     * @param string $name
+     * @param array $values
+     * @param Identity $identity
+     */
+    protected function guardItem($name, $values, Identity $identity)
+    {
+        $singularName = ucfirst(substr($name, 0, strlen($name) - 1));
+        $hasMethod = sprintf("has%s", $singularName);
+        $getMethod = sprintf("get%s", $singularName);
+
+        if (!$identity->$hasMethod() || !isset($values[$name])) {
+            return false;
+        }
+
+        foreach ($values[$name] as $item) {
+            if($item == $identity->$getMethod()) {
+                return true;
             }
         }
 
