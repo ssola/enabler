@@ -19,7 +19,8 @@ class Percentage implements ValueObjectInterface
 
 	public function getValue()
 	{
-		return $this->value;
+		$value = new Integer($this->value);
+		return $value->getValue();
 	}
 
 	public function equals(ValueObjectInterface $object)

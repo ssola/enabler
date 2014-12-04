@@ -24,13 +24,24 @@ class ValidateIntegerValueObject extends PHPUnit_Framework_TestCase
 		$integer = new Enabler\Object\Integer("abcd");
 	}
 
-	public function testIntegerIsEqualThanInteger()
+	/**
+	 * @expectedException InvalidArgumentException
+	 */
+	public function testPercentageIsEqualThanInteger()
 	{
 		$integer = new Enabler\Object\Integer(10);
 		$percentage = new Enabler\Object\Percentage(
 			new Enabler\Object\Integer(10)
 		);
 
-		$this->assertTrue($integer->equals($percentage->getValue()));
+		$this->assertTrue($integer->equals($percentage));
 	}	
+
+	public function testIntegerIsEqualThanInteger()
+	{
+		$integer = new Enabler\Object\Integer(10);
+		$secondInteger = new Enabler\Object\Integer(10);
+
+		$this->assertTrue($integer->equals($secondInteger));
+	}		
 }
