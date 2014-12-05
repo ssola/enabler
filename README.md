@@ -148,3 +148,7 @@ You can choose among different filters or create your owns in order to displar/h
 - By Random weight distribution: You can display your feature for example only to 10% or your visitors
 - By Identity: Use our Identity class or create your own in order to have access to User Id and/or Group.
 - By date or date range: Display your feature depending on specific date or set a range to display it only for a precise range of dates.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ssola/enabler/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
