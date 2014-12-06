@@ -3,6 +3,8 @@ enabler [![Build Status](https://travis-ci.org/ssola/enabler.svg)](https://travi
 
 Enabler is a simple feature flag package. With this package you can display/hide your awesome new features to customers in order to deploy your new stuff smoothly and to have everything under control.
 
+I would like to know what do you think about this package and if you have an idea about how to improve this package plase create a new issue.
+
 ### Requirements
 
 To use this package you only need to have:
